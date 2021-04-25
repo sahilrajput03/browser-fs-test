@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+    <script type="text/javascript" src="browserfs.min.js"></script>
+    <script type="text/javascript">
+      // Installs globals onto window:
+      // * Buffer
+      // * require (monkey-patches if already defined)
+      // * process
+      // You can pass in an arbitrary object if you do not wish to pollute
+      // the global namespace.
+      BrowserFS.install(window);
+      // Configures BrowserFS to use the LocalStorage file system.
+      BrowserFS.configure(
+        {
+          fs: "LocalStorage",
+        },
+        function (e) {
+          if (e) {
+            // An error happened!
+            throw e;
+          }
+          // Otherwise, BrowserFS is ready-to-use!
+        }
+      );
+    </script>
+    <script src="./js.js"></script>
+  </head>
+  <body>
+    Welcome....
+  </body>
+</html>
